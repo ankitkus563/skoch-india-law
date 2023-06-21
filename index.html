@@ -8,7 +8,7 @@
 	Description: SKOCH  India Law Forum & LITFest
 	Author: SKOCH Group
 	Author URI: https://skoch.in
-	Developer: Rahul Anand
+	Developer: Rahul Anand and Ankit
 	Developer URI: 
 	Version: 1.0.0
 
@@ -2444,10 +2444,9 @@
 							</div>
 						</div>
 						</section><!-- #content end -->
-
 						<!-- Footer
 		============================================= -->
-						<footer id="footer" style="background-color: #002D40; border-top: 0px;">== $0
+						<footer id="footer" style="background-color: #002D40; border-top: 0px;">
 
 							<div class="container">
 
@@ -2464,7 +2463,7 @@
 										<div class="divider" style="margin: 1rem auto;"></div>
 										<a href="/award/apply"
 											class="button button-rounded button-xlarge button-white bg-white button-light text-dark shadow nott ls0 ms-0 mt-3">Apply
-											For SKOCH Law Award</a>
+											for SKOCH Law Award</a>
 									</div>
 								</div>
 
@@ -2479,136 +2478,85 @@
 									<div class="row justify-content-between align-items-center text-dark">
 										<div class="col-md-6">
 											Copyrights &copy; 2023 All Rights Reserved by Skoch Consultancy Services
-											Pvt.
-											Ltd.<br>
+											Pvt. Ltd.<br>
 											<div class="copyright-links"><a href="/terms-and-conditions">Terms &
 													Conditions</a> / <a href="/privacy-policy">Privacy Policy</a></div>
 										</div>
-									</div class="/award/apply" apply<a>
 
-									<div
-										class="col-md-6 d-md-flex flex-md-column align-items-md-end mt-4 mt-md-0 text-dark">
-										<div class="copyrights-menu copyright-links clearfix">
-											<a href="/award/apply">Apply</a>/<a
-												href="/award/methodology">Methodology</a>/<a href="/contact-us">Contact
-												Us</a>
+										<div
+											class="col-md-6 d-md-flex flex-md-column align-items-md-end mt-4 mt-md-0 text-dark">
+											<div class="copyrights-menu copyright-links clearfix">
+												<a href="#">About</a>/<a href="/award/apply">Apply</a>/<a
+													href="/award/methodology">Methodology</a>/<a
+													href="/contact-us">Contact Us</a>
+											</div>
 										</div>
 									</div>
+
 								</div>
 
-							</div>
+							</div><!-- #copyrights end -->
 
-					</div><!-- #copyrights end -->
+						</footer><!-- #footer end -->
 
-					</footer><!-- #footer end -->
+					</div><!-- #wrapper end -->
 
-				</div><!-- #wrapper end -->
-
-				<!-- Go To Top
+					<!-- Go To Top
 	============================================= -->
-				<div id="gotoTop" class="icon-angle-up"></div>
+					<div id="gotoTop" class="icon-angle-up"></div>
 
-				<!-- JavaScripts
+					<!-- JavaScripts
 	============================================= -->
-				<script src="/js/jquery.js"></script>
-				<script src="/js/plugins.min.js"></script>
-				<script src="/js/components/moment.js"></script>
-				<script src="/js/jquery.calendario.js"></script>
-				<script src="/js/events.js"></script>
-				<script src="/js/custom.js"></script>
+					<script src="/js/jquery.js"></script>
+					<script src="/js/plugins.min.js"></script>
+					<script src="/js/components/moment.js"></script>
+					<script src="/js/jquery.calendario.js"></script>
+					<script src="/js/events.js"></script>
+					<script src="/js/custom.js"></script>
 
-				<!-- Footer Scripts
+					<!-- Footer Scripts
 	============================================= -->
-				<script src="/js/functions.js"></script>
+					<script src="/js/functions.js"></script>
 
-				<script>
-
-					$(document).ready(function () {
-
-						jQuery('.block-expand-categories').find('.expand-category').on('click', function () {
-							let category = $(this);
-
-							category.siblings().removeClass('active');
-							category.addClass('active');
+					<script>
+						jQuery(document).ready(function ($) {
+							var elementParent = $('.floating-contact-wrap');
+							$('.floating-contact-btn, .btn-contact').off('click').on('click', function (e) {
+								elementParent.toggleClass('active',);
+								e.preventDefault(e);
+							});
 						});
 
-					});
+						var cal = $('#calendar').calendario({
+							onDayClick: function ($el, $contentEl, dateProperties) {
 
-				</script>
-
-				<script>
-					jQuery(document).ready(function ($) {
-						var elementParent = $('.floating-contact-wrap');
-						$('.floating-contact-btn, .btn-contact').off('click').on('click', function (e) {
-							elementParent.toggleClass('active',);
-							e.preventDefault(e);
-						});
-					});
-
-					var cal = $('#calendar').calendario({
-						onDayClick: function ($el, $contentEl, dateProperties) {
-
-							for (var key in dateProperties) {
-								console.log(key + ' = ' + dateProperties[key]);
-							}
-
-						},
-						caldata: canvasEvents
-					}),
-						$month = $('#calendar-month').html(cal.getMonthName()),
-						$year = $('#calendar-year').html(cal.getYear());
-
-					$('#calendar-next').on('click', function () {
-						cal.gotoNextMonth(updateMonthYear);
-					});
-					$('#calendar-prev').on('click', function () {
-						cal.gotoPreviousMonth(updateMonthYear);
-					});
-					$('#calendar-current').on('click', function () {
-						cal.gotoNow(updateMonthYear);
-					});
-
-					function updateMonthYear() {
-						$month.html(cal.getMonthName());
-						$year.html(cal.getYear());
-					};
-
-
-				</script>
-
-				<script>
-					jQuery(document).ready(function ($) {
-						var $awardeeItems = $('#awardees .awardee');
-						if (window.location.hash != '') {
-							var getAwardeeFilterHash = window.location.hash;
-							var hashAwardeeqFilter = getAwardeeFilterHash.split('#');
-							if ($awardeeItems.hasClass(hashAwardeeFilter[1])) {
-								$('.grid-filter li').removeClass('activeFilter');
-								$('[data-filter=".' + hashAwardeeFilter[1] + '"]').parent('li').addClass('activeFilter');
-								var hashAwardeeSelector = '.' + hashAwardeeFilter[1];
-								$awardeeItems.css('display', 'none');
-								if (hashAwardeeSelector != 'all') {
-									$(hashAwardeeSelector).fadeIn(500);
-								} else {
-									$awardeeItems.fadeIn(500);
+								for (var key in dateProperties) {
+									console.log(key + ' = ' + dateProperties[key]);
 								}
-							}
-						}
 
-						$('.grid-filter a').on('click', function () {
-							$('.grid-filter li').removeClass('activeFilter');
-							$(this).parent('li').addClass('activeFilter');
-							var awardeeSelector = $(this).attr('data-filter');
-							$awardeeItems.css('display', 'none');
-							if (awardeeSelector != 'all') {
-								$(awardeeSelector).fadeIn(500);
-							} else {
-								$awardeeItems.fadeIn(500);
-							}
-							return false;
+							},
+							caldata: canvasEvents
+						}),
+							$month = $('#calendar-month').html(cal.getMonthName()),
+							$year = $('#calendar-year').html(cal.getYear());
+
+						$('#calendar-next').on('click', function () {
+							cal.gotoNextMonth(updateMonthYear);
 						});
-					});
-				</script>
+						$('#calendar-prev').on('click', function () {
+							cal.gotoPreviousMonth(updateMonthYear);
+						});
+						$('#calendar-current').on('click', function () {
+							cal.gotoNow(updateMonthYear);
+						});
+
+						function updateMonthYear() {
+							$month.html(cal.getMonthName());
+							$year.html(cal.getYear());
+						};
+
+
+					</script>
 
 </body>
 
